@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.practice.web.boot.web.dto.HelloResponseDtoTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-01-06T12:44:05" hostname="DESKTOP-0AKIGA2" time="0.003">
-  <properties/>
-  <testcase name="lombok_func_test" classname="com.practice.web.boot.web.dto.HelloResponseDtoTest" time="0.003"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
