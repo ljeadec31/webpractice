@@ -24,8 +24,8 @@
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
     <loaded-nodes>
-      <connection connection-id="5f085737-b2a5-4204-acd3-e787ca8e2c60">
-        <schema name="mysql" object-types="table, view" />
+      <connection connection-id="128e4bac-c217-4c61-a6ad-bb94fa4fd050">
+        <schema name="mysql" object-types="table" />
       </connection>
     </loaded-nodes>
   </component>
@@ -46,7 +46,70 @@ CREATE TABLE test (
 
 insert into test(content) values ('테스트');
 
-select * from test;]]></console>
+select * from test;
+
+create table posts (id bigint not null auto_increment, created_date datetime, modified_date datetime, author varchar(255), content TEXT not null, title varchar(500) not null, primary key (id)) engine=InnoDB
+create table user (id bigint not null auto_increment, created_date datetime, modified_date datetime, email varchar(255) not null, name varchar(255) not null, picture varchar(255), role varchar(255) not null, primary key (id)) engine=InnoDB]]></console>
+      <console name="practice 2" type="STANDARD" schema="mysql" session="Main"><![CDATA[create table posts (id bigint not null auto_increment, created_date datetime, modified_date datetime, author varchar(255), content TEXT not null, title varchar(500) not null, primary key (id)) engine=InnoDB
+
+create table user (id bigint not null auto_increment, created_date datetime, modified_date datetime, email varchar(255) not null, name varchar(255) not null, picture varchar(255), role varchar(255) not null, primary key (id)) engine=InnoDB
+
+
+CREATE TABLE SPRING_SESSION (
+	PRIMARY_ID CHAR(36) NOT NULL,
+	SESSION_ID CHAR(36) NOT NULL,
+	CREATION_TIME BIGINT NOT NULL,
+	LAST_ACCESS_TIME BIGINT NOT NULL,
+	MAX_INACTIVE_INTERVAL INT NOT NULL,
+	EXPIRY_TIME BIGINT NOT NULL,
+	PRINCIPAL_NAME VARCHAR(100),
+	CONSTRAINT SPRING_SESSION_PK PRIMARY KEY (PRIMARY_ID)
+) ENGINE=InnoDB ROW_FORMAT=DYNAMIC;
+
+CREATE UNIQUE INDEX SPRING_SESSION_IX1 ON SPRING_SESSION (SESSION_ID);
+CREATE INDEX SPRING_SESSION_IX2 ON SPRING_SESSION (EXPIRY_TIME);
+CREATE INDEX SPRING_SESSION_IX3 ON SPRING_SESSION (PRINCIPAL_NAME);
+
+CREATE TABLE SPRING_SESSION_ATTRIBUTES (
+	SESSION_PRIMARY_ID CHAR(36) NOT NULL,
+	ATTRIBUTE_NAME VARCHAR(200) NOT NULL,
+	ATTRIBUTE_BYTES BLOB NOT NULL,
+	CONSTRAINT SPRING_SESSION_ATTRIBUTES_PK PRIMARY KEY (SESSION_PRIMARY_ID, ATTRIBUTE_NAME),
+	CONSTRAINT SPRING_SESSION_ATTRIBUTES_FK FOREIGN KEY (SESSION_PRIMARY_ID) REFERENCES SPRING_SESSION(PRIMARY_ID) ON DELETE CASCADE
+) ENGINE=InnoDB ROW_FORMAT=DYNAMIC;]]></console>
+    </connection>
+    <connection id="8af8a4df-b53c-4a49-ac84-96141a51fbec">
+      <console name="jennylee" type="STANDARD" schema="mysql" session="Main" />
+      <console name="jennylee 2" type="STANDARD" schema="mysql" session="Main"><![CDATA[create table posts (id bigint not null auto_increment, created_date datetime, modified_date datetime, author varchar(255), content TEXT not null, title varchar(500) not null, primary key (id)) engine=InnoDB
+create table user (id bigint not null auto_increment, created_date datetime, modified_date datetime, email varchar(255) not null, name varchar(255) not null, picture varchar(255), role varchar(255) not null, primary key (id)) engine=InnoDB]]></console>
+    </connection>
+    <connection id="128e4bac-c217-4c61-a6ad-bb94fa4fd050">
+      <console name="practice" type="STANDARD" schema="mysql" session="Main" />
+      <console name="practice 1" type="STANDARD" schema="mysql" session="Main"><![CDATA[use practice_sprboot2_webservice;
+create table posts (id bigint not null auto_increment, created_date datetime, modified_date datetime, author varchar(255), content TEXT not null, title varchar(500) not null, primary key (id)) engine=InnoDB
+create table user (id bigint not null auto_increment, created_date datetime, modified_date datetime, email varchar(255) not null, name varchar(255) not null, picture varchar(255), role varchar(255) not null, primary key (id)) engine=InnoDB
+CREATE TABLE SPRING_SESSION (
+	PRIMARY_ID CHAR(36) NOT NULL,
+	SESSION_ID CHAR(36) NOT NULL,
+	CREATION_TIME BIGINT NOT NULL,
+	LAST_ACCESS_TIME BIGINT NOT NULL,
+	MAX_INACTIVE_INTERVAL INT NOT NULL,
+	EXPIRY_TIME BIGINT NOT NULL,
+	PRINCIPAL_NAME VARCHAR(100),
+	CONSTRAINT SPRING_SESSION_PK PRIMARY KEY (PRIMARY_ID)
+) ENGINE=InnoDB ROW_FORMAT=DYNAMIC;
+
+CREATE UNIQUE INDEX SPRING_SESSION_IX1 ON SPRING_SESSION (SESSION_ID);
+CREATE INDEX SPRING_SESSION_IX2 ON SPRING_SESSION (EXPIRY_TIME);
+CREATE INDEX SPRING_SESSION_IX3 ON SPRING_SESSION (PRINCIPAL_NAME);
+
+CREATE TABLE SPRING_SESSION_ATTRIBUTES (
+	SESSION_PRIMARY_ID CHAR(36) NOT NULL,
+	ATTRIBUTE_NAME VARCHAR(200) NOT NULL,
+	ATTRIBUTE_BYTES BLOB NOT NULL,
+	CONSTRAINT SPRING_SESSION_ATTRIBUTES_PK PRIMARY KEY (SESSION_PRIMARY_ID, ATTRIBUTE_NAME),
+	CONSTRAINT SPRING_SESSION_ATTRIBUTES_FK FOREIGN KEY (SESSION_PRIMARY_ID) REFERENCES SPRING_SESSION(PRIMARY_ID) ON DELETE CASCADE
+) ENGINE=InnoDB ROW_FORMAT=DYNAMIC;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
@@ -54,6 +117,8 @@ select * from test;]]></console>
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="5f085737-b2a5-4204-acd3-e787ca8e2c60" />
+    <connection id="8af8a4df-b53c-4a49-ac84-96141a51fbec" />
+    <connection id="128e4bac-c217-4c61-a6ad-bb94fa4fd050" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
@@ -85,6 +150,174 @@ select * from test;]]></console>
         <database>
           <name value="practice" />
           <description value="practice" />
+          <database-type value="MYSQL" />
+          <config-type value="BASIC" />
+          <database-version value="5.5" />
+          <driver-source value="BUILTIN" />
+          <driver-library value="" />
+          <driver value="" />
+          <url-type value="DATABASE" />
+          <host value="practice-sprboot2-webservice.cgy3yx6afofi.us-east-1.rds.amazonaws.com " />
+          <port value="3306" />
+          <database value="mysql" />
+          <type value="USER_PASSWORD" />
+          <user value="jennylee" />
+          <deprecated-pwd value="ZHBsb2RxbTU=" />
+        </database>
+        <properties>
+          <auto-commit value="false" />
+        </properties>
+        <ssh-settings>
+          <active value="false" />
+          <proxy-host value="" />
+          <proxy-port value="22" />
+          <proxy-user value="" />
+          <deprecated-proxy-pwd value="" />
+          <auth-type value="PASSWORD" />
+          <key-file value="" />
+          <key-passphrase value="" />
+        </ssh-settings>
+        <ssl-settings>
+          <active value="false" />
+          <certificate-authority-file value="" />
+          <client-certificate-file value="" />
+          <client-key-file value="" />
+        </ssl-settings>
+        <details>
+          <charset value="UTF-8" />
+          <session-management value="true" />
+          <ddl-file-binding value="true" />
+          <database-logging value="false" />
+          <connect-automatically value="true" />
+          <restore-workspace value="true" />
+          <restore-workspace-deep value="true" />
+          <environment-type value="default" />
+          <connectivity-timeout value="5" />
+          <idle-time-to-disconnect value="30" />
+          <idle-time-to-disconnect-pool value="5" />
+          <credential-expiry-time value="10" />
+          <max-connection-pool-size value="7" />
+          <alternative-statement-delimiter value="" />
+        </details>
+        <object-filters hide-empty-schemas="false" hide-pseudo-columns="false">
+          <object-type-filter use-master-settings="true">
+            <object-type name="SCHEMA" enabled="true" />
+            <object-type name="USER" enabled="true" />
+            <object-type name="ROLE" enabled="true" />
+            <object-type name="PRIVILEGE" enabled="true" />
+            <object-type name="CHARSET" enabled="true" />
+            <object-type name="TABLE" enabled="true" />
+            <object-type name="VIEW" enabled="true" />
+            <object-type name="MATERIALIZED_VIEW" enabled="true" />
+            <object-type name="NESTED_TABLE" enabled="true" />
+            <object-type name="COLUMN" enabled="true" />
+            <object-type name="INDEX" enabled="true" />
+            <object-type name="CONSTRAINT" enabled="true" />
+            <object-type name="DATASET_TRIGGER" enabled="true" />
+            <object-type name="DATABASE_TRIGGER" enabled="true" />
+            <object-type name="SYNONYM" enabled="true" />
+            <object-type name="SEQUENCE" enabled="true" />
+            <object-type name="PROCEDURE" enabled="true" />
+            <object-type name="FUNCTION" enabled="true" />
+            <object-type name="PACKAGE" enabled="true" />
+            <object-type name="TYPE" enabled="true" />
+            <object-type name="TYPE_ATTRIBUTE" enabled="true" />
+            <object-type name="ARGUMENT" enabled="true" />
+            <object-type name="DIMENSION" enabled="true" />
+            <object-type name="CLUSTER" enabled="true" />
+            <object-type name="DBLINK" enabled="true" />
+          </object-type-filter>
+          <object-name-filters />
+        </object-filters>
+      </connection>
+      <connection id="8af8a4df-b53c-4a49-ac84-96141a51fbec" active="true">
+        <database>
+          <name value="jennylee" />
+          <description value="" />
+          <database-type value="MYSQL" />
+          <config-type value="BASIC" />
+          <database-version value="5.5" />
+          <driver-source value="BUILTIN" />
+          <driver-library value="" />
+          <driver value="" />
+          <url-type value="DATABASE" />
+          <host value="practice-sprboot2-webservice.cgy3yx6afofi.us-east-1.rds.amazonaws.com " />
+          <port value="3306" />
+          <database value="mysql" />
+          <type value="USER_PASSWORD" />
+          <user value="jennylee" />
+          <deprecated-pwd value="ZHBsb2RxbTU=" />
+        </database>
+        <properties>
+          <auto-commit value="false" />
+        </properties>
+        <ssh-settings>
+          <active value="false" />
+          <proxy-host value="" />
+          <proxy-port value="22" />
+          <proxy-user value="" />
+          <deprecated-proxy-pwd value="" />
+          <auth-type value="PASSWORD" />
+          <key-file value="" />
+          <key-passphrase value="" />
+        </ssh-settings>
+        <ssl-settings>
+          <active value="false" />
+          <certificate-authority-file value="" />
+          <client-certificate-file value="" />
+          <client-key-file value="" />
+        </ssl-settings>
+        <details>
+          <charset value="UTF-8" />
+          <session-management value="true" />
+          <ddl-file-binding value="true" />
+          <database-logging value="false" />
+          <connect-automatically value="true" />
+          <restore-workspace value="true" />
+          <restore-workspace-deep value="true" />
+          <environment-type value="default" />
+          <connectivity-timeout value="5" />
+          <idle-time-to-disconnect value="30" />
+          <idle-time-to-disconnect-pool value="5" />
+          <credential-expiry-time value="10" />
+          <max-connection-pool-size value="7" />
+          <alternative-statement-delimiter value="" />
+        </details>
+        <object-filters hide-empty-schemas="false" hide-pseudo-columns="false">
+          <object-type-filter use-master-settings="true">
+            <object-type name="SCHEMA" enabled="true" />
+            <object-type name="USER" enabled="true" />
+            <object-type name="ROLE" enabled="true" />
+            <object-type name="PRIVILEGE" enabled="true" />
+            <object-type name="CHARSET" enabled="true" />
+            <object-type name="TABLE" enabled="true" />
+            <object-type name="VIEW" enabled="true" />
+            <object-type name="MATERIALIZED_VIEW" enabled="true" />
+            <object-type name="NESTED_TABLE" enabled="true" />
+            <object-type name="COLUMN" enabled="true" />
+            <object-type name="INDEX" enabled="true" />
+            <object-type name="CONSTRAINT" enabled="true" />
+            <object-type name="DATASET_TRIGGER" enabled="true" />
+            <object-type name="DATABASE_TRIGGER" enabled="true" />
+            <object-type name="SYNONYM" enabled="true" />
+            <object-type name="SEQUENCE" enabled="true" />
+            <object-type name="PROCEDURE" enabled="true" />
+            <object-type name="FUNCTION" enabled="true" />
+            <object-type name="PACKAGE" enabled="true" />
+            <object-type name="TYPE" enabled="true" />
+            <object-type name="TYPE_ATTRIBUTE" enabled="true" />
+            <object-type name="ARGUMENT" enabled="true" />
+            <object-type name="DIMENSION" enabled="true" />
+            <object-type name="CLUSTER" enabled="true" />
+            <object-type name="DBLINK" enabled="true" />
+          </object-type-filter>
+          <object-name-filters />
+        </object-filters>
+      </connection>
+      <connection id="128e4bac-c217-4c61-a6ad-bb94fa4fd050" active="true">
+        <database>
+          <name value="practice" />
+          <description value="" />
           <database-type value="MYSQL" />
           <config-type value="BASIC" />
           <database-version value="5.5" />
