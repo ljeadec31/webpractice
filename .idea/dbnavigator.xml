@@ -24,8 +24,8 @@
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
     <loaded-nodes>
-      <connection connection-id="128e4bac-c217-4c61-a6ad-bb94fa4fd050">
-        <schema name="mysql" object-types="table" />
+      <connection connection-id="5f085737-b2a5-4204-acd3-e787ca8e2c60">
+        <schema name="mysql" object-types="view, table" />
       </connection>
     </loaded-nodes>
   </component>
